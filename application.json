@@ -1,0 +1,13 @@
+{
+  "name": "Cubo",
+  "log": {
+    "showColors": true,
+    "showPayload": true,
+    "showSource": true,
+    "suppressType": [],
+    "suppressSource": []
+  },
+  "server": {
+    "port": 8443
+  }
+}

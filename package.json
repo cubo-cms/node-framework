@@ -1,0 +1,18 @@
+{
+  "name": "@cubo-cms/node-framework",
+  "version": "0.4.24",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "nodemon ./test/server.mjs",
+    "test": "nodemon ./test/index.mjs"
+  },
+  "author": "Papiando <info@papiando.com> (https://papiando.com/me)",
+  "license": "ISC",
+  "dependencies": {
+    "http2": "^3.3.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
