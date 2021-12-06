@@ -3,9 +3,9 @@
   "log": {
     "showColors": true,
     "showPayload": true,
-    "showSource": true,
-    "suppressType": [],
-    "suppressSource": []
+    "showSource": false,
+    "suppressType": ["debug"],
+    "suppressSource": ["Namespace"]
   },
   "server": {
     "port": 8443
