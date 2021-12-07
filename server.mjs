@@ -1,12 +1,18 @@
 /** @package        @cubo-cms/node-framework
-  * @module         /lib/Class/DataSource.mjs
+  * @module         /server.mjs
   * @version        0.4.25
   * @copyright      2021 Cubo CMS <https://cubo-cms.com/COPYRIGHT.md>
   * @license        ISC license <https://cubo-cms.com/LICENSE.md>
   * @author         Papiando <info@papiando.com>
   **/
 
-import Namespace from '../Namespace.mjs';
+import Cubo from './lib/Namespace.mjs';
+await Cubo.load();
 
-export default class DataSource extends Namespace.Class {
-}
+const { Application } = Cubo;
+
+new Application().error((error) => {
+  console.error(error);
+}).success((app) => {
+  app.server();
+});
