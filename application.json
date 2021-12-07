@@ -1,5 +1,8 @@
 {
   "name": "Cubo",
+  "title": "Cubo CMS",
+  "description": "This is my first App",
+  "dataSource": "#/.config/dataSource.json",
   "log": {
     "showColors": true,
     "showPayload": true,
