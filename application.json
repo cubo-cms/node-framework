@@ -7,7 +7,5 @@
     "suppressStatus": ["debug"],
     "suppressSource": ["Namespace"]
   },
-  "server": {
-    "port": 8443
-  }
+  "server": "#/.config/server.json"
 }
