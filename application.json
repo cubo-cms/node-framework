@@ -4,7 +4,7 @@
     "showColors": true,
     "showPayload": true,
     "showSource": false,
-    "suppressStatus": ["debug"],
+    "suppressStatus": [],
     "suppressSource": ["Namespace"]
   },
   "server": "#/.config/server.json"
