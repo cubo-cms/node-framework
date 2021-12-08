@@ -1,6 +1,6 @@
 {
   "name": "@cubo-cms/node-framework",
-  "version": "0.4.26",
+  "version": "0.4.27",
   "description": "",
   "main": "server.mjs",
   "directories": {
