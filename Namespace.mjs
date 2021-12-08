@@ -10,8 +10,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import Class from './Class.mjs';
-import JLoader from './Helper/JLoader.mjs';
+import Class from './lib/Class.mjs';
+import JLoader from './lib/Helper/JLoader.mjs';
 
 class Namespace {
   /** @static @property {object} default - holds default settings for class
@@ -34,6 +34,14 @@ class Namespace {
   /** @static @private @property {object} succeeded - modules loaded
     **/
   static #succeeded = new Set();
+
+  /** @static @function path()
+    * Getter to retrieve path to this module
+    * @return {string}
+    **/
+  static get path() {
+    return path.dirname(fileURLToPath(import.meta.url));
+  }
 
   /** @static @function exists(moduleName)
     * Returns true if module exists
@@ -132,7 +140,7 @@ class Namespace {
     * @param {string} basePath - base path for module path; defaults to current directory
     * @return {object}
     **/
-  static register(searchPath = this.default.searchPath, basePath = JLoader.basePath) {
+  static register(searchPath = this.default.searchPath, basePath = Namespace.path) {
     return new Promise((resolve, reject) => {
       this.registerPath(JLoader.resolvePath(searchPath))
         .then((namespace) => {
@@ -183,6 +191,6 @@ class Namespace {
 }
 
 if(Namespace.default.autoRegister)
-  await Namespace.register();
+  await Namespace.register('#/lib', Namespace.path);
 
 export default Namespace;
