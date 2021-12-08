@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "node ./server.mjs",
-    "test": "nodemon ./test/index.mjs"
+    "test": "nodemon ./server.mjs"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
