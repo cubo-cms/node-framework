@@ -1,11 +1,25 @@
 {
   "name": "@cubo-cms/node-framework",
-  "version": "0.4.25",
+  "version": "0.4.26",
   "description": "",
   "main": "server.mjs",
+  "directories": {
+    "lib": "lib"
+  },
+  "exports": {
+    "import": "./lib/Namespace.mjs",
+    "require": "./index.cjs"
+  },
   "scripts": {
-    "start": "nodemon ./server.mjs",
+    "start": "node ./server.mjs",
     "test": "nodemon ./test/index.mjs"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubo-cms/node-framework.git"
   },
   "author": "Papiando <info@papiando.com> (https://papiando.com/me)",
   "license": "ISC",
