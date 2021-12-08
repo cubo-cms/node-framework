@@ -1,6 +1,6 @@
 /** @package        @cubo-cms/node-framework
   * @module         /lib/Namespace.mjs
-  * @version        0.4.28
+  * @version        0.4.29
   * @copyright      2021 Cubo CMS <https://cubo-cms.com/COPYRIGHT.md>
   * @license        ISC license <https://cubo-cms.com/LICENSE.md>
   * @author         Papiando <info@papiando.com>
@@ -17,7 +17,7 @@ class Namespace {
   /** @static @property {object} default - holds default settings for class
     **/
   static default = {
-    autoRegister: true,     // automatically register the current namespace
+    autoRegister: true,    // automatically register the current namespace
     useGlobal: false,       // option to publish namespace objects globally
     includeExtensions: ['.mjs', '.js'],
     searchPath: '#/lib'     // search path to locate modules
@@ -61,19 +61,19 @@ class Namespace {
   }
   /** @static @function load(registry)
     * Loads all registered modules
-    * @param {object} data - optionally provide alternative registry
+    * @param {object} registry - optionally provide alternative registry
     * @return {object}
     **/
-  static load(data = this.#registry) {
+  static load(registry = this.#registry) {
     return new Promise((resolve, reject) => {
       let promises = [];
-      for(const moduleName of Object.keys(data)) {
-        if(this.#registry[moduleName] && !this.#registry[moduleName].done)
+      for(const moduleName of Object.keys(registry)) {
+        if(registry[moduleName] && !registry[moduleName].done)
           promises.push(this.loadModule(moduleName));
       }
       Promise.allSettled(promises)
         .then(() => {
-          this.#registry = {};
+          registry = {};
           resolve(this);
         });
     });
@@ -84,42 +84,40 @@ class Namespace {
     * @param {string} moduleName - name of module
     * @return {object}
     **/
-  static loadModule(moduleName) {
+  static loadModule(moduleName, registry = this.#registry) {
     return new Promise((resolve, reject) => {
-      let registry = this.#registry[moduleName];
-      if(registry) {
-        if(registry.done || this.#succeeded.has(moduleName)) {
+      let register = registry[moduleName];
+      if(register) {
+        if(register.done || this.#succeeded.has(moduleName)) {
           resolve(moduleName);
         } else {
-          if(registry.dependency) {
-            this.loadModule(registry.dependency)
+          if(register.dependency) {
+            this.loadModule(register.dependency, registry)
               .then(() => {
-                import(registry.path)
-                  .then((module) => {
-                    this[moduleName] = module.default;
-                    if(this.default.useGlobal)
-                      global[moduleName] = this[moduleName];
-                    this.#succeeded.add(moduleName);
-                    registry.done = true;
-                    resolve(moduleName);
-                  }).catch((error) => {
-                    this.#failed.add(moduleName);
-                    reject(error);
-                  });
+                import(register.path).then((module) => {
+                  this[moduleName] = module.default;
+                  if(this.default.useGlobal)
+                    global[moduleName] = this[moduleName];
+                  this.#succeeded.add(moduleName);
+                  register.done = true;
+                  resolve(moduleName);
+                }).catch((error) => {
+                  this.#failed.add(moduleName);
+                  reject(error);
+                });
               });
           } else {
-            import(registry.path)
-              .then((module) => {
-                this[moduleName] = module.default;
-                if(this.default.useGlobal)
-                  global[moduleName] = this[moduleName];
-                this.#succeeded.add(moduleName);
-                registry.done = true;
-                resolve(moduleName);
-              }).catch((error) => {
-                this.#failed.add(moduleName);
-                reject(error);
-              });
+            import(register.path).then((module) => {
+              this[moduleName] = module.default;
+              if(this.default.useGlobal)
+                global[moduleName] = this[moduleName];
+              this.#succeeded.add(moduleName);
+              register.done = true;
+              resolve(moduleName);
+            }).catch((error) => {
+              this.#failed.add(moduleName);
+              reject(error);
+            });
           }
         }
       } else {
@@ -142,14 +140,13 @@ class Namespace {
     **/
   static register(searchPath = this.default.searchPath, basePath = Namespace.path) {
     return new Promise((resolve, reject) => {
-      this.registerPath(JLoader.resolvePath(searchPath))
+      this.registerPath(JLoader.resolvePath(searchPath, basePath))
         .then((namespace) => {
           resolve(this.#registry);
         }).catch((error) => {
           reject(error);
         });
     });
-    return this;
   }
   /** @static @function registerModule(registration,moduleName)
     * function register - returns the registration of the module
@@ -191,6 +188,6 @@ class Namespace {
 }
 
 if(Namespace.default.autoRegister)
-  await Namespace.register('#/lib', Namespace.path);
+  await Namespace.register(Namespace.default.searchPath, Namespace.path);
 
 export default Namespace;
