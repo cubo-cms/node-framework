@@ -24,7 +24,7 @@
   "author": "Papiando <info@papiando.com> (https://papiando.com/me)",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.6.2"
+    "mongodb": "^3.7.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
