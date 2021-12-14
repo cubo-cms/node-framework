@@ -1,0 +1,6 @@
+<article>
+  <h1>{=data.name->tcase}</h1>
+  <div class="metadata">Published {=data.metadata.published->date} by <a href="/User:{=data.metadata.publisher}">{=data.metadata.publisher->name}</a></div>
+  <div class="intro">{=data.introText->render}</div>
+  <div class="body">{=data.text->render}</div>
+</article>

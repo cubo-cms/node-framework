@@ -1,0 +1,6 @@
+<article>
+  <h1>{=dataType->title}</h1>
+  <ul>
+    {each document of data}<li><a href="/{=dataType}:{=document.id}">{=document.name}</a></li>{/each}
+  </ul>
+</article>
