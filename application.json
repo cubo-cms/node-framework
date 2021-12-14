@@ -10,5 +10,15 @@
     "suppressStatus": [],
     "suppressSource": ["Namespace"]
   },
-  "server": "#/.config/server.json"
+  "server": "#/.config/server.json",
+  "style": {
+    "default": {
+      "document": "#/view/default/document.html",
+      "list": "#/view/default/list.html"
+    },
+    "AccessLevel": {
+      "document": "#/view/AccessLevel/document.html",
+      "list": "#/view/AccessLevel/list.html"
+    }
+  }
 }
