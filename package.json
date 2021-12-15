@@ -1,7 +1,8 @@
 {
   "name": "@cubo-cms/node-framework",
+  "type": "module",
   "version": "0.4.35",
-  "description": "",
+  "description": "Cubo CMS Framework for Node.js",
   "main": "server.mjs",
   "directories": {
     "lib": "lib"
@@ -22,13 +23,16 @@
     "url": "https://github.com/cubo-cms/node-framework.git"
   },
   "author": "Papiando <info@papiando.com> (https://papiando.com/me)",
-  "license": "ISC",
+  "license": "ISC (https://cubo-cms.com/LICENSE.md)",
   "dependencies": {
     "marked": "^4.0.7",
-    "mongodb": "^4.2.1",
+    "mongodb": "^4.2.2",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": ">=14.15"
   }
 }
