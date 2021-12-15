@@ -27,12 +27,17 @@
   "dependencies": {
     "marked": "^4.0.7",
     "mongodb": "^4.2.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "parserblade": ">=1.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
   "engines": {
     "node": ">=14.15"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/cubo-cms/node-framework/issues"
+  },
+  "homepage": "https://github.com/cubo-cms/node-framework#readme"
 }
