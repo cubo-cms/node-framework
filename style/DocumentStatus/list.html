@@ -1,5 +1,5 @@
 <article>
-  <h1>{=dataType->title}</h1>
+  <h1>{=dataType}</h1>
   <dl>
     {each document of data}<dt><a href="/{=dataType}:{=document.id}"><data value="{=dataType}:{=document.id}">{=document.name}</data></a></dt>
     <dd>{=document.description}</dd>
