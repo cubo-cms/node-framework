@@ -20,7 +20,7 @@ class Namespace {
     autoRegister: true,    // automatically register the current namespace
     useGlobal: false,       // option to publish namespace objects globally
     includeExtensions: ['.mjs', '.js'],
-    searchPath: '#/lib'     // search path to locate modules
+    searchPath: '$/lib'     // search path to locate modules
   };
   /** @static @private @property {object} registry - holds registry of modules
     **/
