@@ -1,5 +1,5 @@
 <article>
-  <h1>{=data.name->tcase}</h1>
+  <h1>{=data.name}</h1>
   <div class="metadata">Published {=data.metadata.published->date} by <a href="/User:{=data.metadata.publisher}">{=data.metadata.publisher->name}</a></div>
-  <div class="body">{=data.body->render}</div>
+  <div class="body">{=data.description->render}</div>
 </article>
