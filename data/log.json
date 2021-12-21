@@ -1,0 +1,7 @@
+{
+  "showColors": true,
+  "showPayload": true,
+  "showSource": false,
+  "suppressStatus": ["debug"],
+  "suppressSource": ["Namespace"]
+}

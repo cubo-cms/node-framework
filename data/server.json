@@ -1,0 +1,8 @@
+{
+  "key": "$/.cert/privkey.pem",
+  "cert": "$/.cert/cert.pem",
+  "allowHTTP1": true,
+  "port": 8443,
+  "digest": "sha-512",
+  "poweredBy": false
+}
