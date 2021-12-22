@@ -5,6 +5,6 @@ let app = new Application();
 
 app.use(Router);
 
-//app.server({ secure: true, port: 8443, cert: './.cert/cert.pem', key: './.cert/privkey.pem' })
-app.server()
+app.server({ cert: '~/.cert/cert.pem', key: '~/.cert/privkey.pem' })
+//app.server()
   .then((data) => console.log(data));
