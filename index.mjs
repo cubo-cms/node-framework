@@ -1,10 +1,8 @@
 import Application from './lib/Handler/Application.mjs';
 import Router from './lib/Handler/Router.mjs';
 
-let app = new Application();
+const app = new Application('$/application.json');
 
-app.use(Router);
+//app.use(Router);
 
-app.server({ cert: '~/.cert/cert.pem', key: '~/.cert/privkey.pem' })
-//app.server()
-  .then((data) => console.log(data));
+app.server();
