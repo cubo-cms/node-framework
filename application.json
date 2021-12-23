@@ -3,13 +3,7 @@
   "title": "Cubo CMS",
   "description": "This is my first App",
   "dataSource": "$/.config/dataSource.json",
-  "log": {
-    "showColors": true,
-    "showPayload": true,
-    "showSource": false,
-    "suppressStatus": [],
-    "suppressSource": ["Namespace"]
-  },
+  "log": "$/.config/log.json",
   "server": "$/.config/server.json",
   "style": "$/.config/style.json"
 }
