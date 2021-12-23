@@ -17,7 +17,7 @@ class Namespace {
   /** @static @property {object} default - holds default settings for class
     **/
   static default = {
-    autoRegister: true,    // automatically register the current namespace
+    autoRegister: true,     // automatically register the current namespace
     useGlobal: false,       // option to publish namespace objects globally
     includeExtensions: ['.mjs', '.js'],
     searchPath: '$/lib'     // search path to locate modules

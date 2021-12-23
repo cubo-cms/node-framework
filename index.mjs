@@ -1,5 +1,10 @@
-import Application from './lib/Handler/Application.mjs';
-import Router from './lib/Handler/Router.mjs';
+import Cubo from './Namespace.mjs';
+
+await Cubo.load();
+
+console.log(Cubo.modules());
+
+const { Application } = Cubo;
 
 const app = new Application('$/application.json');
 
