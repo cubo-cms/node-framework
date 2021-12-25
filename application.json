@@ -4,6 +4,7 @@
   "description": "This is my first App",
   "dataSource": "$/.config/dataSource.json",
   "log": "$/.config/log.json",
+  "router": "$/.config/router.json",
   "server": "$/.config/server.json",
   "style": "$/.config/style.json"
 }

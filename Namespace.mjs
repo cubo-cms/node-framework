@@ -10,7 +10,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import Class from './lib/Class.mjs';
 import JLoader from './lib/Helper/JLoader.mjs';
 
 class Namespace {
@@ -20,20 +19,27 @@ class Namespace {
     autoRegister: true,     // automatically register the current namespace
     useGlobal: false,       // option to publish namespace objects globally
     includeExtensions: ['.mjs', '.js'],
+    registry: {
+      Class: {
+        name: 'Class',
+        path: '$/lib/Class.mjs',
+        dependency: undefined
+      }
+    },
     searchPath: '$/lib'     // search path to locate modules
-  };
+  }
   /** @static @private @property {object} registry - holds registry of modules
     **/
-  static #registry = {};
+  static #registry = this.default.registry
   /** @static @private @property {object} failed - modules failed to load
     **/
-  static #failed = new Set();
+  static #failed = new Set()
   /** @static @private @property {object} omitted - modules omitted to load
     **/
-  static #omitted = new Set();
+  static #omitted = new Set()
   /** @static @private @property {object} succeeded - modules loaded
     **/
-  static #succeeded = new Set();
+  static #succeeded = new Set()
 
   /** @static @function path()
     * Getter to retrieve path to this module
