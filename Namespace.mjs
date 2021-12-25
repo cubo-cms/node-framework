@@ -10,8 +10,6 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import JLoader from './lib/Helper/JLoader.mjs';
-
 class Namespace {
   /** @static @property {object} default - holds default settings for class
     **/
@@ -146,7 +144,7 @@ class Namespace {
     **/
   static register(searchPath = this.default.searchPath, basePath = Namespace.path) {
     return new Promise((resolve, reject) => {
-      this.registerPath(JLoader.resolvePath(searchPath, basePath))
+      this.registerPath(this.resolvePath(searchPath, basePath))
         .then((namespace) => {
           resolve(this.#registry);
         }).catch((error) => {
@@ -190,6 +188,15 @@ class Namespace {
           });
       });
     });
+  }
+  /** @static @function resolvePath(data,basePath)
+    * Returns a resolved path
+    * @param {string} data
+    * @param {string} basePath - optional alternative base path
+    * @return {string}
+    **/
+  static resolvePath(data = '', basePath = this.basePath) {
+    return data.startsWith('$/') ? path.resolve(basePath, data.substr(2)) : data.startsWith('~/') ? path.resolve(os.homedir(), data.substr(2)) : path.resolve(this.path, data);
   }
 }
 
